@@ -3,7 +3,6 @@ resource "github_branch" "develop" {
   branch     = "develop"
 
   depends_on = [
-    github_repository_file.README,
-    github_repository_file.LICENSE
+    github_repository_file.README
   ]
 }
