@@ -4,21 +4,19 @@ Bootstrap GitHub repositories using Terraform and Infrastructure as Code.
 
 ## Overview
 
-GitHub Bootstrap is a learning project focused on mastering Terraform while building a reusable repository bootstrapper.
+GitHub Bootstrap is a Terraform-based project that creates and configures GitHub repositories automatically.
 
-The project automates the creation and configuration of GitHub repositories following a consistent structure and a set of best practices.
+The project currently provisions a new repository from a template, adds a local README file, creates a `develop` branch, applies branch protection rules, and configures a standard set of issue labels.
 
 Current features include:
 
-* Repository creation
-* Branch management
-* Branch protection rules
-* Issue labels
-* Repository templates (README, LICENSE)
-* Configurable variables and outputs
-* Input validation
-
-Future versions will extend the project with GitHub Actions, repository secrets, reusable project templates and a command-line interface built with Bash and Python.
+* Create a GitHub repository using the Terraform GitHub provider
+* Initialize the repository from a template repository
+* Add `README.md` from `templates/README.md`
+* Create a `develop` branch
+* Apply branch protection rules for `main` and `develop`
+* Configure issue labels
+* Validate input variables
 
 ---
 
@@ -27,16 +25,19 @@ Future versions will extend the project with GitHub Actions, repository secrets,
 ```text
 .
 ├── terraform/
-│   ├── providers.tf
-│   ├── versions.tf
-│   ├── variables.tf
+│   ├── branches.tf
+│   ├── files.tf
+│   ├── labels.tf
 │   ├── outputs.tf
-│   ├── main.tf
-│   └── terraform.tfvars
+│   ├── protections.tf
+│   ├── providers.tf
+│   ├── repositories.tf
+│   ├── terraform.tfvars
+│   ├── variables.tf
+│   └── versions.tf
 │
 └── templates/
-    ├── README.md
-    └── LICENSE
+    └── README.md
 ```
 
 ---
@@ -44,8 +45,8 @@ Future versions will extend the project with GitHub Actions, repository secrets,
 ## Requirements
 
 * Terraform >= 1.0
-* GitHub Personal Access Token (PAT)
-* GitHub account
+* GitHub account with permission to create repositories
+* GitHub Personal Access Token (PAT) or environment token
 
 ---
 
@@ -69,35 +70,60 @@ export GITHUB_TOKEN="<your-token>"
 
 ## Usage
 
-Move into the Terraform directory:
+1. Move into the Terraform directory:
 
 ```bash
 cd terraform
 ```
 
-Initialize the project:
+2. Initialize Terraform:
 
 ```bash
 terraform init
 ```
 
-Review the execution plan:
+3. Review the execution plan:
 
 ```bash
 terraform plan
 ```
 
-Create the repository:
+4. Apply the configuration:
 
 ```bash
 terraform apply
 ```
+```
 
-Destroy the managed resources:
+5. Destroy the managed resources when needed:
 
 ```bash
 terraform destroy
 ```
+```
+
+---
+
+## Terraform inputs
+
+The project uses the following variables in `terraform/variables.tf`:
+
+* `owner` — GitHub owner (user or organization)
+* `repo_name` — Name of the repository to create
+* `repo_visibility` — `public` or `private`
+* `repo_description` — Repository description
+* `template_owner` — Owner of the template repository
+* `template_repository` — Template repository name
+
+Set values in `terraform/terraform.tfvars` or pass them at runtime.
+
+---
+
+## Notes
+
+* The repository is created with `auto_init = true`.
+* A local `README.md` is added from `templates/README.md` after creation.
+* Branch protection enforces signed commits and prevents force pushes and deletions on `main` and `develop`.
 
 ---
 
@@ -110,28 +136,8 @@ terraform destroy
 * [x] Branch management
 * [x] Branch protection
 * [x] Issue labels
+* [x] GitHub Actions
 * [x] Repository templates
-* [ ] GitHub Actions
-* [ ] Repository secrets
-* [ ] Repository variables
-* [ ] Reusable templates
-* [ ] Bash CLI
-* [ ] Python CLI
-* [ ] Automated project bootstrap
-
----
-
-## Learning Goals
-
-This project is intended to learn:
-
-* Terraform
-* Infrastructure as Code (IaC)
-* GitHub Provider
-* GitHub API concepts
-* CI/CD with GitHub Actions
-* Bash automation
-* Python automation
 
 ---
 
