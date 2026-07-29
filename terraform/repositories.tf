@@ -1,3 +1,4 @@
+#checkov:skip=CKV_GIT_1: This module supports public repositories by design.
 resource "github_repository" "repository" {
   name        = var.repo_name
   visibility  = var.repo_visibility
