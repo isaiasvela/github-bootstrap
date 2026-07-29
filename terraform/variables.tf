@@ -37,3 +37,15 @@ variable "repo_description" {
   description = "Description of the GitHub repository"
   type        = string
 }
+
+variable "template_owner" {
+  description = "Owner of the template repository (user or organization)"
+  type        = string
+  default     = "isaiasvela"
+}
+
+variable "template_repository" {
+  description = "Name of the template repository to use for creating the new repository"
+  type        = string
+  default     = "template-default"
+}
