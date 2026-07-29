@@ -8,17 +8,17 @@ variable "repo_name" {
   type        = string
 
   validation {
-    condition = !strcontains(var.repo_name, " ")
+    condition     = !strcontains(var.repo_name, " ")
     error_message = "Repository names cannot contain spaces.\n Use '-' instead (e.g. recipe-manager)."
   }
-  
+
   validation {
-    condition = length(trimspace(var.repo_name)) > 0
+    condition     = length(trimspace(var.repo_name)) > 0
     error_message = "repo_name cannot be empty."
   }
 
   validation {
-    condition = length(trimspace(var.repo_name)) <= 100
+    condition     = length(trimspace(var.repo_name)) <= 100
     error_message = "repo_name cannot exceed 100 characters."
   }
 }
