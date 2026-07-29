@@ -18,13 +18,26 @@ jobs:
         steps:
         - name: Checkout code
           uses: actions/checkout@v4
+
         - name: Set up Terraform
           uses: hashicorp/setup-terraform@v2
           with:
             terraform_version: 1.6.0
+
         - name: Terraform format
           run: terraform fmt -check
+
         - name: Terraform init
           run: terraform init
+
         - name: terraform validate
           run: terraform validate
+
+        - name: Setup TFLint
+          uses: terraform-linters/setup-tflint@v4
+
+        - name: Initialize TFLint
+          run: tflint --init
+          
+        - name: Run TFLint
+          run: tflint
