@@ -66,6 +66,19 @@ Linux/macOS:
 export GITHUB_TOKEN="<your-token>"
 ```
 
+To keep the token out of your shell history, type it via a hidden prompt instead of pasting it on the command line:
+
+```powershell
+$secure = Read-Host "GitHub token" -AsSecureString
+$env:GITHUB_TOKEN = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure))
+```
+
+```bash
+read -rsp "GitHub token: " TOKEN && export GITHUB_TOKEN="$TOKEN" && unset TOKEN
+```
+
+If you use GitHub CLI: `export GITHUB_TOKEN="$(gh auth token)"`.
+
 ---
 
 ## Usage
@@ -124,6 +137,7 @@ Set values in `terraform/terraform.tfvars` or pass them at runtime.
 * The repository is created with `auto_init = true`.
 * A local `README.md` is added from `templates/README.md` after creation.
 * Branch protection enforces signed commits and prevents force pushes and deletions on `main` and `develop`.
+* `terraform/terraform.tfvars` and local state (`terraform.tfstate*`, `.terraform/`) are gitignored — never commit them.
 
 ---
 

@@ -6,3 +6,6 @@ terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 terraform/.terraform/
 terraform/.terraform.tfstate.lock.info
+
+# Agent working memory (local-only rolling log, do not commit)
+MEMORY.md
