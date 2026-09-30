@@ -24,6 +24,10 @@ Current features include:
 
 ```text
 .
+├── .checkov.yaml
+├── scripts/
+│   ├── reset-terraform.ps1
+│   └── reset-terraform.sh
 ├── terraform/
 │   ├── branches.tf
 │   ├── files.tf
@@ -32,7 +36,7 @@ Current features include:
 │   ├── protections.tf
 │   ├── providers.tf
 │   ├── repositories.tf
-│   ├── terraform.tfvars
+│   ├── terraform.tfvars.example   # copy to terraform.tfvars (gitignored)
 │   ├── variables.tf
 │   └── versions.tf
 │
@@ -44,7 +48,7 @@ Current features include:
 
 ## Requirements
 
-* Terraform >= 1.0
+* Terraform >= 1.6
 * GitHub account with permission to create repositories
 * GitHub Personal Access Token (PAT) or environment token
 
@@ -106,7 +110,6 @@ terraform plan
 ```bash
 terraform apply
 ```
-```
 
 5. Destroy the managed resources when needed:
 
@@ -115,7 +118,6 @@ terraform destroy
 ```
 
 > Warning: `destroy` deletes the GitHub repository permanently. Uncomment the `lifecycle { prevent_destroy = true }` block in `terraform/repositories.tf` if you want Terraform to refuse it.
-```
 
 ---
 
