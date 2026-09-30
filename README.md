@@ -138,6 +138,37 @@ cp terraform.tfvars.example terraform.tfvars
 
 ---
 
+## Creating another repository
+
+Terraform tracks what it manages in local state (`terraform.tfstate`). Changing `repo_name` and re-applying does not cleanly start a new bootstrap — reset the state first. Your existing repositories are kept: reset only clears Terraform's local record, it never deletes GitHub repositories.
+
+1. Run the reset script (from the repo root):
+
+```powershell
+.\scripts\reset-terraform.ps1
+```
+
+```bash
+chmod +x scripts/reset-terraform.sh  # first time only
+./scripts/reset-terraform.sh
+```
+
+Or remove the state files manually (from `terraform/`):
+
+```powershell
+Remove-Item terraform.tfstate, terraform.tfstate.backup -Force -ErrorAction SilentlyContinue
+```
+
+```bash
+rm -f terraform.tfstate terraform.tfstate.backup
+```
+
+2. Update `terraform.tfvars` with the new repository config and re-run `init` / `plan` / `apply`. If the provider or template changed since last time, refresh with `terraform init -upgrade`.
+
+> Only if you no longer need the previous repository, delete it before resetting with `terraform destroy` (from `terraform/`). Otherwise skip this — created repositories stay untouched.
+
+---
+
 ## Notes
 
 * The repository is created with `auto_init = true`.
