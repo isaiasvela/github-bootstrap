@@ -1,0 +1,17 @@
+# Dependabot opens update PRs (you review and merge, nothing auto-merges):
+# - github-actions: CI actions in .github/workflows/
+# - terraform: provider pins in terraform/versions.tf
+# Note: the CI Terraform version pin (.github/workflows/ci.yml) stays manual.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+
+  - package-ecosystem: "terraform"
+    directory: "/terraform"
+    schedule:
+      interval: "weekly"
+      day: "monday"

@@ -131,6 +131,7 @@ The project uses the following variables in `terraform/variables.tf`:
 * `repo_description` — Repository description
 * `template_owner` — Owner of the template repository
 * `template_repository` — Template repository name
+* `required_approving_review_count` — Required approving reviews on `main` and `develop` (`0`–`6`, default `0`)
 
 Copy `terraform/terraform.tfvars.example` to `terraform/terraform.tfvars` (gitignored, never commit it) and set values there, or pass them at runtime with `-var`:
 
@@ -182,15 +183,14 @@ rm -f terraform.tfstate terraform.tfstate.backup
 
 ## Roadmap
 
-* [x] Provider configuration
-* [x] Repository creation
-* [x] Variables and validation
-* [x] Outputs
-* [x] Branch management
-* [x] Branch protection
-* [x] Issue labels
-* [x] GitHub Actions
-* [x] Repository templates
+Completed:
+
+* [x] Provider configuration, repository creation, variables and validation, outputs
+* [x] Branch management, branch protection, issue labels
+* [x] GitHub Actions, repository templates, state reset scripts
+* [x] Input validations, tfvars example, destroy guardrail, configurable reviews
+* [x] CI hardening (concurrency, path filters, shared Checkov config)
+* [x] Label descriptions, Dependabot for Actions and provider updates
 
 ---
 

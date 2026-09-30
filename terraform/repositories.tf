@@ -8,6 +8,8 @@ resource "github_repository" "repository" {
   allow_squash_merge = true
   allow_rebase_merge = false
 
+  delete_branch_on_merge = true
+
   template {
     owner      = var.template_owner
     repository = var.template_repository

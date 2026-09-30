@@ -28,7 +28,7 @@ terraform apply   # creates repo + README + develop branch + protections + label
 terraform destroy # deletes the managed GitHub repo; do this BEFORE reset if repo is unwanted
 ```
 
-Verify like CI (`.github/workflows/ci.yml`, runs with `working-directory: terraform`, Terraform 1.6.0):
+Verify like CI (`.github/workflows/ci.yml`, runs with `working-directory: terraform`, Terraform 1.14.5):
 
 ```bash
 cd terraform
@@ -67,8 +67,8 @@ State is local (`terraform.tfstate`, gitignored). Changing `repo_name` and re-ap
 ## Conventions / constraints
 
 - `terraform.tfvars` variables (`variables.tf`): `repo_name` = no spaces, non-empty, ≤100 chars; `repo_visibility` = `public|private` only. Defaults: `template_owner="isaiasvela"`, `template_repository="template-default"`.
-- New repos: `auto_init=true`, squash-only merges (`allow_squash_merge=true`, merge/rebase off), `develop` branch created after README (`branches.tf` `depends_on` the file resource — keep it).
-- Protections on `main` + `develop`: signed commits required, no force-push/deletion, conversation resolution required. No required PR reviews, no `enforce_admins` (deliberate — Checkov/TRIVY flags expected).
+- New repos: `auto_init=true`, squash-only merges (`allow_squash_merge=true`, merge/rebase off), `delete_branch_on_merge=true`, `develop` branch created after README (`branches.tf` `depends_on` the file resource — keep it).
+- Protections on `main` + `develop`: signed commits required, no force-push/deletion, conversation resolution required. Required reviews configurable via `required_approving_review_count` (`0`–`6`, default `0`). `has_issues`/`has_projects` left at provider defaults (`true` — issues are needed for labels).
 - Labels are the fixed set in `terraform/labels.tf` (`github_issue_labels` manages the whole set — edits replace labels).
 - Provider pin: `integrations/github ~> 6.0`, `required_version >= 1.6.0`; lockfile (`.terraform.lock.hcl`) is gitignored, so `init` resolves fresh.
 - Line endings LF, final newline, trim whitespace (`.editorconfig`); `.gitattributes` forces LF for `*.sh` (shebang breaks with CRLF).
