@@ -84,4 +84,3 @@ State is local (`terraform.tfstate`, gitignored). Changing `repo_name` and re-ap
 ## Limits
 - Always: update `MEMORY.md` at the end of a task.
 - Ask before: new dependencies, new files and new data foramt changes.
-- Never: do commits, create branches, pull, push.
