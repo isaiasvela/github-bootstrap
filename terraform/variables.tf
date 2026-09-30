@@ -84,3 +84,14 @@ variable "template_repository" {
     error_message = "template_repository cannot contain spaces."
   }
 }
+
+variable "required_approving_review_count" {
+  description = "Required approving reviews on main and develop (0 keeps current behaviour)"
+  type        = number
+  default     = 0
+
+  validation {
+    condition     = var.required_approving_review_count >= 0 && var.required_approving_review_count <= 6
+    error_message = "required_approving_review_count must be between 0 and 6."
+  }
+}

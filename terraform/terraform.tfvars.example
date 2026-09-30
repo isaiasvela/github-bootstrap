@@ -10,3 +10,6 @@ repo_description = "My new GitHub repository"
 # Template configuration
 template_owner      = "isaiasvela"
 template_repository = "template-default"
+
+# Branch protection (0 = no required reviews, current behaviour)
+required_approving_review_count = 0

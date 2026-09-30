@@ -131,6 +131,7 @@ The project uses the following variables in `terraform/variables.tf`:
 * `repo_description` — Repository description
 * `template_owner` — Owner of the template repository
 * `template_repository` — Template repository name
+* `required_approving_review_count` — Required approving reviews on `main` and `develop` (`0`–`6`, default `0`)
 
 Copy `terraform/terraform.tfvars.example` to `terraform/terraform.tfvars` (gitignored, never commit it) and set values there, or pass them at runtime with `-var`:
 

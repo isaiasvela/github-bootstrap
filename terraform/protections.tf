@@ -7,6 +7,11 @@ resource "github_branch_protection" "main_protection" {
   require_conversation_resolution = true
 
   require_signed_commits = true
+
+  required_pull_request_reviews {
+    required_approving_review_count = var.required_approving_review_count
+    dismiss_stale_reviews           = var.required_approving_review_count > 0
+  }
 }
 
 resource "github_branch_protection" "develop_protection" {
@@ -18,4 +23,9 @@ resource "github_branch_protection" "develop_protection" {
   require_conversation_resolution = true
 
   require_signed_commits = true
+
+  required_pull_request_reviews {
+    required_approving_review_count = var.required_approving_review_count
+    dismiss_stale_reviews           = var.required_approving_review_count > 0
+  }
 }
