@@ -3,7 +3,7 @@ Project history across sessions. Maximum ~50 lines: summarize or remove anything
 
 ## Current Status
 - v1 up and running: create repositories with the `develop` and `main` branches and their respective protection settings.
-- Improvement batch (12 items, plan in `.opencode/plan/github-bootstrap-improvements.md`): branch 1 merged (#10). Branch 2 `feature/tfvars-validations-safety` done, uncommitted (tfvars.example + validations + prevent_destroy note). fmt/validate/tflint green; new validations verified via `plan` with bad vars.
+- Improvement batch (12 items, plan in `.opencode/plan/github-bootstrap-improvements.md`): branches 1–2 merged (#10, #11). Branch 3 `feature/reset-docs` done, uncommitted (reset scripts reintroduced from main + docs; #7 partially reversed for reset only, env.* stay out). PS script verified in temp sandbox.
 
 ## Lessons Learned and Pitfalls to Avoid
 - `main` and `develop` have NO merge base (disconnected histories); final develop→main PR will show full-file diffs. Strategy deferred.
@@ -20,5 +20,5 @@ Project history across sessions. Maximum ~50 lines: summarize or remove anything
 - `AGENTS.md` ships in branch 1 docs PR.
 
 ## Next Steps
-- Push branch 2, open PR to `develop` (no `gh` CLI on Windows box — via web UI).
-- Branch 3: `feature/reset-docs` (reset via `rm` commands, no scripts per #7).
+- Push branch 3, open PR to `develop` (no `gh` CLI on Windows box — via web UI).
+- Branch 4: `feature/protections-cleanup` (remove `dismiss_stale_reviews`, keep count=0).
