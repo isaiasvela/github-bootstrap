@@ -1,0 +1,7 @@
+# Checkov skips shared by CI (.github/workflows/ci.yml) and local runs.
+# checkov auto-loads this file from the scanned directory root.
+skip-check:
+  # This module intentionally supports public repositories.
+  - CKV_GIT_1
+  # Required approvals depend on the project and team size.
+  - CKV_GIT_5
