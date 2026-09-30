@@ -1,0 +1,12 @@
+# Copy to terraform.tfvars (gitignored, never commit it) and adjust:
+#   cp terraform.tfvars.example terraform.tfvars
+
+# Repo configuration
+owner            = "your-github-user"
+repo_name        = "my-new-project"
+repo_visibility  = "private"
+repo_description = "My new GitHub repository"
+
+# Template configuration
+template_owner      = "isaiasvela"
+template_repository = "template-default"
