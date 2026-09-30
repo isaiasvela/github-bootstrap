@@ -1,0 +1,2 @@
+# Enforce LF for shell scripts: a CRLF checkout on Windows breaks the shebang.
+*.sh text eol=lf
