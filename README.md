@@ -190,8 +190,7 @@ Completed:
 * [x] GitHub Actions, repository templates, state reset scripts
 * [x] Input validations, tfvars example, destroy guardrail, configurable reviews
 * [x] CI hardening (concurrency, path filters, shared Checkov config)
-* [ ] Descriptions for issue labels
-* [ ] Dependabot for GitHub Actions and provider updates
+* [x] Label descriptions, Dependabot for Actions and provider updates
 
 ---
 
