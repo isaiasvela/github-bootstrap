@@ -183,15 +183,15 @@ rm -f terraform.tfstate terraform.tfstate.backup
 
 ## Roadmap
 
-* [x] Provider configuration
-* [x] Repository creation
-* [x] Variables and validation
-* [x] Outputs
-* [x] Branch management
-* [x] Branch protection
-* [x] Issue labels
-* [x] GitHub Actions
-* [x] Repository templates
+Completed:
+
+* [x] Provider configuration, repository creation, variables and validation, outputs
+* [x] Branch management, branch protection, issue labels
+* [x] GitHub Actions, repository templates, state reset scripts
+* [x] Input validations, tfvars example, destroy guardrail, configurable reviews
+* [x] CI hardening (concurrency, path filters, shared Checkov config)
+* [ ] Descriptions for issue labels
+* [ ] Dependabot for GitHub Actions and provider updates
 
 ---
 

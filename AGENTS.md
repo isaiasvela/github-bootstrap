@@ -28,7 +28,7 @@ terraform apply   # creates repo + README + develop branch + protections + label
 terraform destroy # deletes the managed GitHub repo; do this BEFORE reset if repo is unwanted
 ```
 
-Verify like CI (`.github/workflows/ci.yml`, runs with `working-directory: terraform`, Terraform 1.6.0):
+Verify like CI (`.github/workflows/ci.yml`, runs with `working-directory: terraform`, Terraform 1.14.5):
 
 ```bash
 cd terraform
