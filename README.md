@@ -113,6 +113,8 @@ terraform apply
 ```bash
 terraform destroy
 ```
+
+> Warning: `destroy` deletes the GitHub repository permanently. Uncomment the `lifecycle { prevent_destroy = true }` block in `terraform/repositories.tf` if you want Terraform to refuse it.
 ```
 
 ---
@@ -128,7 +130,11 @@ The project uses the following variables in `terraform/variables.tf`:
 * `template_owner` — Owner of the template repository
 * `template_repository` — Template repository name
 
-Set values in `terraform/terraform.tfvars` or pass them at runtime.
+Copy `terraform/terraform.tfvars.example` to `terraform/terraform.tfvars` (gitignored, never commit it) and set values there, or pass them at runtime with `-var`:
+
+```bash
+cp terraform.tfvars.example terraform.tfvars
+```
 
 ---
 
