@@ -12,4 +12,10 @@ resource "github_repository" "repository" {
     owner      = var.template_owner
     repository = var.template_repository
   }
+
+  # Uncomment to protect the repository from accidental `terraform destroy`,
+  # which deletes the GitHub repository permanently.
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 }
